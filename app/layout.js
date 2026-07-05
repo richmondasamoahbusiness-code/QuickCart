@@ -1,3 +1,4 @@
+import {ClerkProvider} from "@clerk/nextjs";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import { AppContextProvider } from "@/context/AppContext";
@@ -14,10 +15,12 @@ export default function RootLayout({ children }) {
   return (
       <html lang="en">
         <body className={`${outfit.className} antialiased text-gray-700`} >
-          <Toaster />
-          <AppContextProvider>
+          <ClerkProvider>
+            <Toaster />
+            <AppContextProvider>
             {children}
-          </AppContextProvider>
+            </AppContextProvider>
+          </ClerkProvider>
         </body>
       </html>
   );
